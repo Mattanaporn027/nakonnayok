@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เที่ยวจังหวัดนครนายก</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            padding-top: 50px;
+            cursor: url('img/star.png'), auto;
+        }
+
+        header {
+            background-color: #ffda79;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background-color: rgba(250, 250, 250, 0.7);  /* สีขาวพร้อมความโปร่งใส 70% */
+            transform: translateY(-3px);
+        }
+       
+        .nav-link {
+            color: #00796b; /* สีลิงก์ */
+            font-weight: 500; /* ความหนาของตัวอักษร */
+            transition: color 0.3s ease, transform 0.3s ease; /* เพิ่มเอฟเฟกต์การเปลี่ยนสี */
+        }
+
+        .nav-link:hover {
+            color: #004d40; /* สีเมื่อ hover */
+            transform: scale(1.15); /* ขยายขนาดเมื่อ hover */
+        }
+
+        .nav-link i {
+            margin-right: 5px; /* เพิ่มช่องว่างระหว่างไอคอนกับข้อความ */
+        }
+     
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            filter: invert(100%);
+        }
+
+        .btn-primary, .btn-outline-secondary {
+            transition: 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffcc00;
+            border-color: #ffcc00;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #ddd;
+            border-color: #ddd;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+        }
+
+        footer h5 {
+            color: #ff6347;
+        }
+
+        footer .nav-link {
+            color: #ddd;
+            transition: color 0.3s;
+        }
+
+        footer .nav-link:hover {
+            color: #ff6347;
+        }
+
+        footer .btn-primary {
+            background-color: #ff6347;
+            border: none;
+        }
+
+        footer .btn-primary:hover {
+            background-color: #ff4500;
+        }
+
+        .featurette-divider {
+            margin: 4rem 0;
+        }
+
+        .featurette-heading {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+        }
+
+        .bd-placeholder-img {
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffda79, #ff8c00);
+        }
+        
+
+        .carousel-item img {
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        /* เพิ่มสไตล์พื้นฐานให้กับส่วน container */
+        .container {
+            background-color: #f9f9f9; /* สีพื้นหลังอ่อนเพื่อความนุ่มนวล */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .row {
+            background-color: #f9f9f9; /* สีพื้นหลังอ่อนเพื่อความนุ่มนวล */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+/* การจัดศูนย์และขนาดตัวหนังสือของหัวข้อ */
+        h2.text-center {
+            color: #ffbf00; /* ใช้สีส้มเพื่อความสดใส */
+            font-family: 'Prompt', sans-serif; /* ใช้ฟอนต์ที่ให้ความรู้สึกเข้ากับท้องถิ่น */
+            margin-bottom: 30px;
+        }
+
+/* สไตล์สำหรับภาพและเงา */
+        img.rounded-circle {
+            border: 3px solid #ffc107; /* เพิ่มกรอบสีเหลืองทองรอบภาพ */
+            transition: transform 0.3s ease; /* เพิ่มเอฟเฟกต์การขยายขณะ hover */
+        }
+
+        img.rounded-circle:hover {
+            transform: scale(1.15); /* ขยายภาพเมื่อชี้เมาส์ */
+        }
+
+/* การจัดสไตล์ของหัวข้อแต่ละส่วน */
+        h3.fw-bold {
+            color: #4b0082; /* สีม่วงเข้มที่ให้ความรู้สึกหรูหรา */
+        }
+
+/* สไตล์ข้อความคำบรรยาย */
+        p.text-muted {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #6c757d; /* สีเทาเพื่อความกลมกลืนและอ่านง่าย */
+        }
+
+/* ปุ่ม */
+        .btn-outline-warning {
+            border: 2px solid #ff4500; /* เส้นขอบสีส้มเข้ม */
+            color: #ff4500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-outline-warning:hover {
+            background-color: #ff4500; /* เปลี่ยนเป็นสีส้มเข้มเมื่อชี้เมาส์ */
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="p-3">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <i class="bi bi-globe me-2 fs-3"></i>
+                </a>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li>
+                        <a href="/Home page.html" class="nav-link px-2 text-dark">
+                            <i class="bi bi-house-door-fill"></i> หน้าแรก
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/nakhon.html" class="nav-link px-2 text-dark">
+                            <i class="bi bi-map-fill"></i> สถานที่ท่องเที่ยว
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/map.html" class="nav-link px-2 text-dark">
+                            <i class="bi bi-geo-alt-fill"></i> แผนที่
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contact.html" class="nav-link px-2 text-dark">
+                            <i class="bi bi-telephone-fill"></i> ติดต่อเรา
+                        </a>
+                    </li>
+                </ul>
+                
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                </form>
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-dark me-2">Login</button>
+                    <button type="button" class="btn btn-warning">Sign-up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- สไลด์หลักหน้าเว็บ -->
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/tt2.gif" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="img/1.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="img/2.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- วงกลม 3 วงหน้าเว็บ -->
+    
+    <div class="container marketing my-5">
+        <h2 class="text-center mb-5 fw-bold">ที่เที่ยวแนะนำของจังหวัดนครนายก</h2>
+        <div class="row text-center">
+            <div class="col-lg-4">
+                <img src="img/rr2.jpg" class="rounded-circle mb-3 img-fluid shadow-sm" style="width: 140px; height: 140px; object-fit: cover;" alt="น้ำตกสาริกา">
+                <h3 class="fw-bold">น้ำตกสาริกา</h3>
+                <p class="text-muted">สัมผัสความงามของน้ำตกที่สวยงามและเย็นสบาย เหมาะสำหรับการพักผ่อนในธรรมชาติที่เงียบสงบ.</p>
+                <a class="btn btn-outline-warning" href="nakhon.html">View details »</a>
+            </div>
+            <div class="col-lg-4">
+                <img src="img/rr1.png" class="rounded-circle mb-3 img-fluid shadow-sm" style="width: 140px; height: 140px; object-fit: cover;" alt="อุทยานวังตะไคร้">
+                <h3 class="fw-bold">อุทยานวังตะไคร้</h3>
+                <p class="text-muted">อีกหนึ่งสถานที่ท่องเที่ยวที่ไม่ควรพลาดกับความร่มรื่นและสวยงามของธรรมชาติ.</p>
+                <a class="btn btn-outline-warning" href="nakhon.html">View details »</a>
+            </div>
+            <div class="col-lg-4">
+                <img src="img/rr3.jpg" class="rounded-circle mb-3 img-fluid shadow-sm" style="width: 140px; height: 140px; object-fit: cover;" alt="เขื่อนขุนด่านปราการชน">
+                <h3 class="fw-bold">เขื่อนขุนด่านปราการชน</h3>
+                <p class="text-muted">ชมวิวทิวทัศน์ที่สวยงามของเขื่อนขนาดใหญ่ ที่เป็นแหล่งน้ำสำคัญและแหล่งท่องเที่ยวสุดฮิต.</p>
+                <a class="btn btn-outline-warning" href="nakhon.html">View details »</a>
+            </div>
+        </div>
+    </div>
+    
+        <hr class="featurette-divider">  <!-- สร้างเส้นแนวนอน -->
+
+        <d iv class="row featurette my-5"> <!-- เพิ่มระยะห่างด้านบนและด้านล่าง -->
+            <div class="col-md-7 order-md-2"> <!-- ย้ายตำแหน่งเพื่อให้ภาพอยู่ทางขวา -->
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                    คำขวัญประจำจังหวัดนครนายก 
+                    <span class="text-primary">เมืองแห่งภูเขางาม</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    "เมืองในฝันที่ใกล้กรุง ภูเขางาม น้ำตกสวย รวยธรรมชาติปราศจากมลพิษ"
+                    <br>นครนายกเป็นจังหวัดในภาคกลาง สันนิษฐานว่าเคยเป็นเมืองสมัยทวาราวดี มีหลักฐานแนวกำแพงเนินดินและสันคูอยู่ที่ตำบลดงละคร แต่ในสมัยอยุธยา นครนายกเป็นเมืองหน้าด่านทางทิศตะวันออกในสมัยพระเจ้าอู่ทอง...
+                </p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="img/ff.gif" class="featurette-image img-fluid mx-auto rounded shadow" alt="รูปคำขวัญ"> <!-- เพิ่มคลาส rounded และ shadow -->
+            </div>
+        </d>
+        
+         <!-- จบ!! ส่วนหัวข้อคำขวัญ -->
+
+        <hr class="featurette-divider">  <!-- สร้างเส้นแนวนอน -->
+
+       
+    <!-- หน้าสไลด์ -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 7"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" aria-label="Slide 8"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="8" aria-label="Slide 9"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="9" aria-label="Slide 10"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="10"aria-label="Slide 9"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="9" aria-label="Slide 8"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="8" aria-label="Slide 7"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" aria-label="Slide 6"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 5"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 1"></button>
+      </div>
+
+      <div class="carousel-inner">
+          <div class="carousel-item active">
+              <img src="img/di.gif" class="d-block w-100"  alt="Slide 1">  <!-- สไลด์ที่พัก 0 -->
+              <div class="carousel-caption d-none d-md-block"></div>
+          </div>
+          <div class="carousel-item">
+              <img src="img/1 d.gif" class="d-block w-100" alt="Slide 2"> <!-- สไลด์ที่พัก 1 -->
+              <div class="carousel-caption d-none d-md-block"></div>
+          </div>
+          <div class="carousel-item">
+              <img src="img/3d.gif" class="d-block w-100" alt="Slide 3"> <!-- สไลด์ที่พัก 2 -->
+              <div class="carousel-caption d-none d-md-block"></div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/2 d.gif" class="d-block w-100" alt="Slide 4"> <!-- สไลด์ที่พัก 3 -->
+            <div class="carousel-caption d-none d-md-block"> </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/4d.gif" class="d-block w-100" alt="Slide 5"> <!-- สไลด์ที่พัก 4 -->
+            <div class="carousel-caption d-none d-md-block"> </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/5d.gif" class="d-block w-100" alt="Slide 6"> <!-- สไลด์ที่พัก 5 -->
+            <div class="carousel-caption d-none d-md-block"></div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/yo6.gif" class="d-block w-100" alt="Slide 7"> <!-- สไลด์ที่พัก 6 -->
+            <div class="carousel-caption d-none d-md-block"></div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/yo7.gif" class="d-block w-100" alt="Slide 8"> <!-- สไลด์ที่พัก 7 -->
+            <div class="carousel-caption d-none d-md-block"> </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/yo8.gif" class="d-block w-100" alt="Slide 9"> <!-- สไลด์ที่พัก 8 -->
+            <div class="carousel-caption d-none d-md-block"> </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/yo9.gif" class="d-block w-100" alt="Slide 10"> <!-- สไลด์ที่พัก 9 -->
+            <div class="carousel-caption d-none d-md-block"> </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/yo10.gif" class="d-block w-100" alt="Slide 10"> <!-- สไลด์ที่พัก 10 -->
+            <div class="carousel-caption d-none d-md-block"> </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+      </button>
+  </div>
+
+ <br> <!--เว้นวรรค -->
+
+    <!--ส่วนท้าย -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <i class="bi bi-globe fs-2"></i>
+                    <small class="d-block mb-3 text-muted">&copy;เว็บไซต์นี้ทำไว้เพื่อการศึกษาเท่านั้น</small>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0">การท่องเที่ยวนครนายก</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5> make by</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0">นางสาว มัทนพร สุขเทียม</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0">แผนก : คอมพิวเตอร์ธุรกิจ</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0">ระดับชั้น : ปวส.1/2</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>offer</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0">อาจารย์ กิตติชัย ทองดี</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  
+
+
+
+    
+</body>
+</html>
